@@ -1,7 +1,17 @@
 const express = require('express');
+
 const path = require('path');
+
 const exphbs = require('express-handlebars');
+
+
 const app = express();
+
+// 处理post参数模块 需要先配置
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
 //开发静态资源
 app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', exphbs({
